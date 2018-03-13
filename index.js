@@ -3,8 +3,8 @@ const body = require('koa-body');
 const koaLogger = require('koa-logger');
 
 // Middleware propios
-const logger = require('logger');
-const filmRouter = require('routes/film.router');
+const logger = require('./logger');
+const filmRouter = require('./routes/film.router');
 
 const app = new Koa();
 
