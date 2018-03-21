@@ -9,12 +9,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bunyan": "^1.8.12",
-    "koa": "^2.5.0",
-    "koa-body": "^2.5.0",
-    "koa-logger": "^3.2.0",
-    "koa-router": "^7.1.1",
-    "sequelize": "^4.36.1",
-    "sqlite3": "^3.1.13"
+    "co": "~3.0.1",
+    "co-body": "0.0.1",
+    "co-redis": "0.0.2",
+    "koa": "~0.2.0",
+    "koa-compress": "~1.0.0",
+    "koa-favicon": "~1.0.1",
+    "koa-logger": "~1.1.0",
+    "koa-mount": "~1.2.2",
+    "koa-response-time": "~1.0.1",
+    "koa-router": "~2.2.0",
+    "pg": "~2.10.0",
+    "redis": "~0.10.0",
+    "sequelize": "~2.0.0-beta.5",
+    "sqlite": "^2.9.1",
+    "thunkify": "0.0.1"
   }
 }
