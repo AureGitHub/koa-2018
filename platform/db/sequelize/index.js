@@ -5,7 +5,7 @@ var username = null;
 var password = null;
 var options = { // TODO -- pull from config
     dialect: "sqlite",
-    storage:    __dirname + '/DataBase'
+    storage:    __dirname + '/DataBase.sqlite'
 };
 var client = new Sequelize(null, null, null, options);
 var models = {};
