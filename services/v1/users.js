@@ -27,8 +27,14 @@ var create = exports.create = function *create(){
     this.body = user;
 };
 
+var getAll = exports.getAll = function *getAll(){    
+    var users = yield platform.users.getAll();
+    this.body = users;
+};
+
 exports.register = function(router){
     router.get('/users/:userId', show);
+    router.get('/users/', getAll);
     router.post('/users', create);
     router.delete('/users/:userId', destroy);
 };

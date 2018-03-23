@@ -21,3 +21,13 @@ exports.destroyUser = function *(id){
     
     return user;
 }
+
+
+exports.getAll = function *(){
+    
+    var all = yield db.sequelize.User.findAll();
+    
+    return all;
+}
+
+

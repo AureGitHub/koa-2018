@@ -23,3 +23,7 @@ exports.createUser = function *(name){
 
     return yield usersPersistence.createUser(name);
 }
+
+exports.getAll = function *(){    
+    return yield usersPersistence.getAll();
+};
