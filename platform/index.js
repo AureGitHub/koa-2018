@@ -1,2 +1,4 @@
 exports.users = require('./users');
-exports.posts = require('./posts');
+exports.tiposUser = require('./tipoUser');
+exports.pisos = require('./piso');
+exports.pisosUser = require('./pisoUser');
