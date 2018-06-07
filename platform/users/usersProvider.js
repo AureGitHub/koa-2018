@@ -15,10 +15,8 @@ exports.get = function *(id){
     return yield tipoGenericPersistence.get(tabla, id);    
 };
 
-exports.loginN = function *(name,email,password){
-    if(!name){
-        throw new Error("name must be specified");
-    }
+exports.loginN = function *(email,password){
+   
 
     if(!email){
         throw new Error("email must be specified");

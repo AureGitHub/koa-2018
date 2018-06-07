@@ -44,8 +44,24 @@ var getAll = exports.getAll = function *getAll(){
 
 var loginN = exports.loginN = function *loginN(){    
      var body = yield parse(this);     
-    var users = yield platform.users.loginN(body.name,body.email,body.password);
-    this.body = users;
+    var user = yield platform.users.loginN(body.email,body.password);
+
+    if (user) {
+        let userRet = {};
+        userRet.name = user.email;
+        userRet.perfil = 1;
+        userRet.token = "AuthRouter.OnlygenToken(userFind)";
+      
+        this.body = { 
+            data : userRet
+        };
+    }
+    else {
+        this.body = {
+            data: null
+        };
+    }
+   
 };
 
 

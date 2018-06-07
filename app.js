@@ -4,7 +4,9 @@ var db = require('./platform/db');
 var services = require('./services');
 var co = require('co');
 var platform = require('./platform');
+var cors = require('koa-cors');
 
+app.use(cors());
 app.use(middleware.favicon());
 app.use(middleware.logger());
 app.use(middleware.responseTime());
