@@ -42,7 +42,15 @@ var getAll = exports.getAll = function *getAll(){
     this.body = users;
 };
 
+var loginN = exports.loginN = function *loginN(){    
+     var body = yield parse(this);     
+    var users = yield platform.users.loginN(body.name,body.email,body.password);
+    this.body = users;
+};
+
+
 exports.register = function(router){
+    router.post('/loginN', loginN);
     router.get('/users/:userId', show);
     router.get('/users/', getAll);
     router.post('/users', create);     

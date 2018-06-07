@@ -5,13 +5,18 @@ var services = require('./services');
 var co = require('co');
 var platform = require('./platform');
 
-
 app.use(middleware.favicon());
 app.use(middleware.logger());
 app.use(middleware.responseTime());
 app.use(middleware.compress());
 
 app.use(middleware.mount('/v1', services.v1));
+
+
+/*
+http://localhost:3000/v1/users/
+*/
+
 
 co(function *(){
     var connection = yield db.sequelize.client.sync();
