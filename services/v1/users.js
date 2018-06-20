@@ -1,6 +1,10 @@
 var platform = require('../../platform'),
     parse = require('co-body');
 
+var token=require('../token');
+    
+
+
 var show = exports.show = function *show(){
     var user = yield platform.users.get(this.params.userId);
     if(!user){
@@ -9,6 +13,9 @@ var show = exports.show = function *show(){
 
     this.body = user;
 };
+
+
+
 
 
 var destroy = exports.destroy = function *destroy(){
@@ -42,15 +49,17 @@ var getAll = exports.getAll = function *getAll(){
     this.body = users;
 };
 
-var loginN = exports.loginN = function *loginN(){    
+var login = exports.login = function *login(){    
      var body = yield parse(this);     
     var user = yield platform.users.loginN(body.email,body.password);
 
     if (user) {
         let userRet = {};
-        userRet.name = user.email;
-        userRet.perfil = 1;
-        userRet.token = "AuthRouter.OnlygenToken(userFind)";
+        userRet.name = user.name;
+        userRet.email = user.email;
+        userRet.perfil = user.TipoUserId;
+        userRet.minSession = token.minSession;
+        userRet.token = token.OnlygenToken(userRet);
       
         this.body = { 
             data : userRet
@@ -66,9 +75,9 @@ var loginN = exports.loginN = function *loginN(){
 
 
 exports.register = function(router){
-    router.post('/loginN', loginN);
+    router.post('/login', login);
     router.get('/users/:userId', show);
-    router.get('/users/', getAll);
+    router.get('/users', getAll);
     router.post('/users', create);     
     router.post('/users/:userId', update);
     router.delete('/users/:userId', destroy);

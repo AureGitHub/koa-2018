@@ -12,6 +12,7 @@
     "co": "~3.0.1",
     "co-body": "0.0.1",
     "co-redis": "0.0.2",
+    "jwt-simple": "^0.5.1",
     "koa": "~0.2.0",
     "koa-body": "^2.6.0",
     "koa-compress": "~1.0.0",

@@ -1,0 +1,2 @@
+[{"id":1,"name":"Aure","email":"aureAdmin@gmail.com","password":"pass","createdAt":"2018-03-26T12:09:42.000Z","updatedAt":"2018-03-26T12:30:16.000Z","TipoUserId":1}]
+{"email":"aureAdmin@gmail.com","password":"pass"}
