@@ -58,6 +58,7 @@ var login = exports.login = function *login(){
         userRet.name = user.name;
         userRet.email = user.email;
         userRet.perfil = user.TipoUserId;
+        userRet.isAdmin = user.TipoUserId == 1;
         userRet.minSession = token.minSession;
         userRet.token = token.OnlygenToken(userRet);
       
