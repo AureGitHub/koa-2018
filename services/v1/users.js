@@ -71,7 +71,7 @@ var login = exports.login = function *login(){
         };
     }
    
-};
+}; 
 
 
 exports.register = function(router){
