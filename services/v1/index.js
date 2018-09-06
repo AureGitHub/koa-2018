@@ -5,5 +5,6 @@ require('./users').register(router);
 require('./pisos').register(router);
 require('./pisosUsers').register(router);
 require('./tiposUsers').register(router);
+require('./tiposGastos').register(router);
 
 module.exports = router.middleware();

@@ -2,7 +2,7 @@ var platform = require('../../platform'),
     parse = require('co-body');
 
 var show = exports.show = function *show(){
-    var item = yield platform.tiposUser.get(this.params.tiposUserId);
+    var item = yield platform.tipoGasto.get(this.params.tipoGastoId);
     if(!item){
         return this.throw(404, 'No item found');
     }
@@ -12,7 +12,7 @@ var show = exports.show = function *show(){
 
 
 var destroy = exports.destroy = function *destroy(){
-    var item = yield platform.tiposUser.destroy(this.params.tiposUserId);
+    var item = yield platform.tipoGasto.destroy(this.params.tipoGastoId);
     if(!item){
         return this.throw(404, 'No item found');
     }
@@ -23,26 +23,27 @@ var destroy = exports.destroy = function *destroy(){
 
 var create = exports.create = function *create(){
     var body = yield parse(this);
-    var item = yield platform.tiposUser.create(body.descripcion);
+    var item = yield platform.tipoGasto.create(body.descripcion);
     this.body = item;
 };
 
 var update = exports.update = function *update(){
      var body = yield parse(this);
-    var item = yield platform.tiposUser.update(this.params.tiposUserId,body.descripcion);
+    var item = yield platform.tipoGasto.update(this.params.tipoGastoId,body.descripcion);
     this.body = item;
 };
 
 
 var getAll = exports.getAll = function *getAll(){    
-    var items = yield platform.tiposUser.getAll();
+    var items = yield platform.tipoGasto.getAll();
     this.body = items;
 };
 
+/*http://localhost:3001/v1/tiposGastos/*/
 exports.register = function(router){
-    router.get('/tiposUsers/:tiposUserId', show);
-    router.get('/tiposUsers/', getAll);
-    router.post('/tiposUsers', create);     
-    router.post('/tiposUsers/:tiposUserId', update);
-    router.delete('/tiposUsers/:tiposUserId', destroy);
+    router.get('/tiposGastos/:tipoGastoId', show);
+    router.get('/tiposGastos/', getAll);
+    router.post('/tiposGastos', create);     
+    router.post('/tiposGastos/:tipoGastoId', update);
+    router.delete('/tiposGastos/:tipoGastoId', destroy);
 };

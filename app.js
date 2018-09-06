@@ -66,7 +66,8 @@ co(function *(){
 // };
 
 // yield tasks.user.setPosts([tasks.post]);
-        app.listen(3001);
-        console.log('connected to database and listening on port 3000');
+        var port = 3001;
+        app.listen(port);
+        console.log('connected to database and listening on port ' + port);
     }
 })();
