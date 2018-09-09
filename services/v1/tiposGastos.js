@@ -24,19 +24,27 @@ var destroy = exports.destroy = function *destroy(){
 var create = exports.create = function *create(){
     var body = yield parse(this);
     var item = yield platform.tipoGasto.create(body.descripcion);
-    this.body = item;
+
+    this.body = { 
+        data : item
+    };
+
+    
 };
 
 var update = exports.update = function *update(){
      var body = yield parse(this);
     var item = yield platform.tipoGasto.update(this.params.tipoGastoId,body.descripcion);
-    this.body = item;
+     this.body = item;
 };
 
 
 var getAll = exports.getAll = function *getAll(){    
     var items = yield platform.tipoGasto.getAll();
-    this.body = items;
+    this.body = { 
+        data : items
+    };
+   
 };
 
 /*http://localhost:3001/v1/tiposGastos/*/
@@ -44,6 +52,6 @@ exports.register = function(router){
     router.get('/tiposGastos/:tipoGastoId', show);
     router.get('/tiposGastos/', getAll);
     router.post('/tiposGastos', create);     
-    router.post('/tiposGastos/:tipoGastoId', update);
+    router.put('/tiposGastos/:tipoGastoId', update);
     router.delete('/tiposGastos/:tipoGastoId', destroy);
 };

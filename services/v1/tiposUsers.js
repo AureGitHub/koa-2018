@@ -24,7 +24,9 @@ var destroy = exports.destroy = function *destroy(){
 var create = exports.create = function *create(){
     var body = yield parse(this);
     var item = yield platform.tiposUser.create(body.descripcion);
-    this.body = item;
+    this.body = { 
+        data : item
+    };
 };
 
 var update = exports.update = function *update(){
@@ -36,13 +38,15 @@ var update = exports.update = function *update(){
 
 var getAll = exports.getAll = function *getAll(){    
     var items = yield platform.tiposUser.getAll();
-    this.body = items;
+    this.body = { 
+        data : items
+    };
 };
 
 exports.register = function(router){
     router.get('/tiposUsers/:tiposUserId', show);
     router.get('/tiposUsers/', getAll);
     router.post('/tiposUsers', create);     
-    router.post('/tiposUsers/:tiposUserId', update);
+    router.put('/tiposUsers/:tiposUserId', update);
     router.delete('/tiposUsers/:tiposUserId', destroy);
 };

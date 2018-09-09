@@ -23,6 +23,19 @@ exports.create = function *(descripcion){
 }
 
 
+exports.update = function *(id,descripcion){
+
+    if(!id){
+        throw new Error("id must be specified");
+    }
+
+    if(!descripcion){
+        throw new Error("descripcion must be specified");
+    }
+
+    return yield tipoGenericPersistence.update(tabla,id,{descripcion});
+}
+
 exports.destroy = function *(id){
     if(!id){
         throw new Error("id must be specified");
